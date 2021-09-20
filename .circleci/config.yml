@@ -13,9 +13,10 @@ jobs:
           npm install
           npm build
   publish:
-    docker:
-      - image: docker
+    machine:
+      image: ubuntu-2004:202107-02
     steps:
+      - checkout
       - run: |
           docker build . -t dams38/node-web-app
           docker image push dams38/node-web-app
