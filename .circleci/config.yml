@@ -1,12 +1,12 @@
 version: 2.1
 executors:
-  my-custom-executor:
+  dams-executor:
     docker:
       - image: cimg/node:lts
 
 jobs:
   build:
-    executor: my-custom-executor
+    executor: dams-executor
     steps:
       - checkout
       - run: |
@@ -23,7 +23,7 @@ jobs:
           docker image push dams38/node-web-app
 
 workflows:
-  my-custom-workflow:
+  dams-executor:
     jobs:
       - build
       - publish:
