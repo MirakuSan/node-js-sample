@@ -1,17 +1,16 @@
 version: 2.1
-executors:
-  dams-executor:
-    docker:
-      - image: cimg/node:lts
 
 jobs:
   build:
-    executor: dams-executor
+    machine:
+      image: ubuntu-2004:202107-02
     steps:
       - checkout
       - run: |
-          npm install
-          npm build
+          docker login --username $DOCKER_LOGIN -p $DOCKER_PASSWORD
+          docker build . -t $DOCKER_LOGIN/node-web-app
+          docker run -p 8080:8080 -d $DOCKER_LOGIN/node-web-app
+          curl localhost:8080 | grep "Welcome to BackSpace Academy"
   publish:
     machine:
       image: ubuntu-2004:202107-02
