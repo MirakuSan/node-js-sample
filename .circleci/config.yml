@@ -7,10 +7,10 @@ jobs:
     steps:
       - checkout
       - run: |
-          docker login --username $DOCKER_LOGIN -p $DOCKER_PASSWORD
           docker build . -t $DOCKER_LOGIN/node-web-app
           docker run -p 8080:8080 -d $DOCKER_LOGIN/node-web-app
-          curl localhost:8080 | grep "Welcome to BackSpace Academy"
+          sleep 2
+          curl -I localhost:8080 | grep "200 OK"
   publish:
     machine:
       image: ubuntu-2004:202107-02
