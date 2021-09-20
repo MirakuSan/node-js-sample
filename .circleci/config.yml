@@ -18,9 +18,9 @@ jobs:
     steps:
       - checkout
       - run: |
-          docker login --username dams38 -p $DOCKER_PASSWORD
-          docker build . -t dams38/node-web-app
-          docker image push dams38/node-web-app
+          docker login --username $DOCKER_LOGIN -p $DOCKER_PASSWORD
+          docker build . -t $DOCKER_LOGIN/node-web-app
+          docker image push $DOCKER_LOGIN/node-web-app
 
 workflows:
   dams-executor:
