@@ -25,4 +25,6 @@ workflows:
   my-custom-workflow:
     jobs:
       - build
-      - publish
+      - publish:
+          requires:
+            - build
