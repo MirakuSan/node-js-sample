@@ -18,6 +18,7 @@ jobs:
     steps:
       - checkout
       - run: |
+          docker login --username dams38 -p $DOCKER_PASSWORD
           docker build . -t dams38/node-web-app
           docker image push dams38/node-web-app
 
