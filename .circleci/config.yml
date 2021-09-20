@@ -2,7 +2,7 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: cimg/node:14.17.6-alpine
+      - image: cimg/node:14
 
 jobs:
   build:
