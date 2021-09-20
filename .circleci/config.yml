@@ -12,6 +12,11 @@ jobs:
       - run: |
           npm install
           npm build
+  publish:
+    docker:
+      - image: docker
+    steps:
+      - run: |
           docker build . -t dams38/node-web-app
           docker image push dams38/node-web-app
 
