@@ -2,17 +2,19 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: cimg/node:lts
+      - image: node:14.17.6-alpine
 
 jobs:
   build:
-
     executor: my-custom-executor
     steps:
       - checkout
       - run: |
           npm install
           npm build
+          docker build . -t dams38/node-web-app
+          docker image push dams38/node-web-app
+
 workflows:
   my-custom-workflow:
     jobs:
